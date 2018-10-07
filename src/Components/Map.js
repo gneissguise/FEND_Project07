@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
+import PlaceMark from './PlaceMark'
 import './Map.css'
 
 // {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
@@ -90,11 +91,11 @@ const MapOptions = {
 
 const PhxMap = withScriptjs(withGoogleMap(props =>
   <GoogleMap
-    defaultZoom={13}
+    defaultZoom={13.5}
     defaultCenter={{ lat: 33.494886, lng: -112.073881 }}
     options={MapOptions}
   >
-    {/* // TODO: Markers go here */}
+    {props.markers.map((m) => <PlaceMark position={m.position} key={m.id} />)}
   </GoogleMap>
 ))
 
@@ -110,7 +111,8 @@ class Map extends Component {
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjwCGmLJQuWEtnfgsIw3ThLbolxrXLrX4&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `90vh` }} />}
-        mapElement={<div style={{ height: `100%` }} />} />
+        mapElement={<div style={{ height: `100%` }} />}
+        markers={this.props.markers} />
     )
   }
 }
