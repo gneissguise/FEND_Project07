@@ -1,0 +1,10 @@
+.gm-style-mtc > div:nth-child(1),
+button.gm-control-active.gm-fullscreen-control,
+.gm-bundled-control > div:nth-child(1) > div,
+.gm-bundled-control > .gm-svpc {
+  background: linear-gradient(#333, #222) !important;
+  border: 0.0625rem solid #444;
+  box-shadow: 0 0.125rem 0 #000;
+  color: #fff;
+  text-shadow: 0 -0.0625rem 0 #000;
+}
