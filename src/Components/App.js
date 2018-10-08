@@ -3,6 +3,7 @@ import './App.css'
 import Map from './Map'
 import Menu from './Menu'
 import Header from './Header'
+import YelpApi from './YelpApi'
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +43,19 @@ class App extends Component {
         { position: { lat: 33.4790185, lng: -112.0501517 }, id: "147dab5e-e876-4757-a38e-50817b23ca7f" }
       ]
     }
+    this.testQuery = this.testQuery.bind(this)
+  }
+
+  testQuery = () => {
+    let timeout = 1000
+    this.state.markers.forEach((m) => {
+      setTimeout(YelpApi(m.position), timeout)
+      timeout += 1000
+    })
+  }
+
+  componentDidMount() {
+    this.testQuery()
   }
 
   render() {

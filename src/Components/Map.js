@@ -3,8 +3,6 @@ import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
 import PlaceMark from './PlaceMark'
 import './Map.css'
 
-// {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
-
 const MapOptions = {
   mapTypeControl: false,
   fullscreenControl: false,
