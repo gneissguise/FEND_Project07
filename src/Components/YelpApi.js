@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import YELP_KEY from '../constants'
 
 //TODO: Add auth token and content-type headers to ApolloClient request
 
@@ -55,7 +56,7 @@ const YelpApi = (query) => {
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
     credentials: "include", // include, same-origin, *omit
     headers: {
-      'authorization': 'Bearer EhYmnMVtdRiyXX1HjAOptnV9-rpIvaQS_WHxz-jRbyk2Wzfe6kWSlAZZqJjkXiqxPRuc-xCDMCzhsdvbdkZybFdcINUvDvfsYph7UPGaZ3dOcBLD89Ykou8OPW26W3Yx'
+      'authorization': `Bearer ${YELP_KEY}`
     },
     //referrer: "no-referrer", // no-referrer, *client
     // data: {
