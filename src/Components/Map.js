@@ -12,9 +12,8 @@ const PhxMap = withScriptjs(withGoogleMap(props =>
     defaultZoom={13.5}
     defaultCenter={{ lat: 33.494886, lng: -112.073881 }}
     options={MAP_OPTIONS}
-    // onReady={this.fetchPlaces}
   >
-    {props.markers.map((m) => <PlaceMark google={window.google} position={m.position} name={m.name} key={m.id} />)}
+    {props.markers.map((m) => <PlaceMark google={window.google} marker={m} key={m.id} />)}
   </GoogleMap>
 ))
 
@@ -22,13 +21,6 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {}
-
-    this.fetchPlaces = this.fetchPlaces.bind(this)
-  }
-
-  fetchPlaces = () => {
-
-
   }
 
   render() {
