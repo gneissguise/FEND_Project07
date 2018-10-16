@@ -9,6 +9,7 @@ import YelpApi from './YelpApi'
 // import Drink from '@material-ui/icons/LocalBar'
 // import Cafe from '@material-ui/icons/LocalCafe'
 
+//TODO: each location should have its own route
 const Info = (props) => {
   const yelpData = props.yelpData
   return (

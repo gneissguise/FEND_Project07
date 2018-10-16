@@ -54,6 +54,10 @@ input.glow:focus {
     }
 }
 
+nav.bm-item-list {
+  padding: 0;
+}
+
 .infoBox {
   background-color: #fff;
   padding: 0 0.75rem 0.5rem 0.75rem;
@@ -67,4 +71,22 @@ input.glow:focus {
     width: 100%;
     max-width: 400px;
     height: auto;
+}
+
+nav a {
+  font-size: 1rem;
+  display: block;
+}
+
+.filterBox {
+  position: relative;
+  left: -1.5rem;
+}
+
+.scrollable {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: auto;
 }

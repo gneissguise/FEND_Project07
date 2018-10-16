@@ -13,7 +13,7 @@ const PhxMap = withScriptjs(withGoogleMap(props =>
     defaultCenter={{ lat: 33.494886, lng: -112.073881 }}
     options={MAP_OPTIONS}
   >
-    {props.markers.map((m) => <PlaceMark google={window.google} marker={m} key={m.id} />)}
+    {props.markers.map((m) => m.visible ? <PlaceMark google={window.google} marker={m} key={m.id} /> : null)}
   </GoogleMap>
 ))
 
