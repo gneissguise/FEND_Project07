@@ -5,7 +5,6 @@ import Header from './Header'
 import { MARKERS } from '../constants'
 import './App.css'
 
-//TODO: Add routing
 class App extends Component {
   constructor(props) {
     super(props)
@@ -15,9 +14,23 @@ class App extends Component {
     }
 
     this.handleMarkerUpdate = this.handleMarkerUpdate.bind(this)
+    this.handleToggleOpen = this.handleToggleOpen.bind(this)
   }
 
   handleMarkerUpdate(markers) {
+    this.setState({ markers })
+  }
+
+  handleToggleOpen(id) {
+    const markers = this.state.markers
+
+    markers.map(m => {
+      if (m.id === id) {
+        m.isOpen = !m.isOpen
+      }
+      return m
+    })
+
     this.setState({ markers })
   }
 
@@ -28,14 +41,15 @@ class App extends Component {
         <Menu
           markers={this.state.markers}
           handleMarkerUpdate={this.handleMarkerUpdate}
+          toggleOpen={this.handleToggleOpen}
         >
           <Map
             markers={this.state.markers}
             handleMarkerUpdate={this.handleMarkerUpdate}
-          />
+            toggleOpen={this.handleToggleOpen} />
         </Menu>
       </div>
-    );
+    )
   }
 }
 

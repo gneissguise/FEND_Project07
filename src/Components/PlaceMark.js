@@ -5,9 +5,9 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import YelpApi from './YelpApi'
+import { LOCALSTORAGE } from '../constants'
 
 // Stateless component that displays info for the <InfoBox>
-//TODO: each location should have its own route
 const Info = (props) => {
   const yelpData = props.yelpData
   return (
@@ -49,25 +49,41 @@ class PlaceMark extends Component {
     super(props)
 
     this.state = {
-      isOpen: false,
       yelpData: null
     }
 
     this.onToggleOpen = this.onToggleOpen.bind(this)
+    this.handleYelpApi = this.handleYelpApi.bind(this)
   }
 
-  onToggleOpen() {
+  // Handles the loading of yelp data.  Checks localstorage first, then hits api
+  handleYelpApi() {
     if (!this.state.yelpData) {
-      YelpApi(this.props.marker.id)
-      .done(data => {
+      let yelpData = JSON.parse(localStorage.getItem(LOCALSTORAGE)) || []
+      const matched = yelpData.find(y => y.alias === this.props.marker.id)
+
+      if (matched) {
         this.setState({
-          yelpData: data
+          yelpData: matched
         })
-      })
+      }
+      else {
+        YelpApi(this.props.marker.id)
+        .done(data => {
+          this.setState({
+            yelpData: data
+          })
+          yelpData = JSON.parse(localStorage.getItem(LOCALSTORAGE)) || []
+          yelpData.push(data)
+          localStorage.setItem(LOCALSTORAGE, JSON.stringify(yelpData))
+        })
+      }
     }
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+  }
+
+  // Toggles the opening of the <InfoBox>
+  onToggleOpen() {
+    this.props.toggleOpen(this.props.marker.id)
   }
 
   render() {
@@ -75,16 +91,19 @@ class PlaceMark extends Component {
     const marker = this.props.marker
     return(
       <Marker
+        id={`marker-${marker.id}`}
         animation={google.maps.Animation.DROP}
-        key={marker.id}
+        key={`marker-${marker.id}`}
         position={marker.position}
         title={marker.name}
         onClick={this.onToggleOpen} >
-        {this.state.isOpen ?
+        {marker.isOpen ?
           <InfoBox
             onCloseClick={this.onToggleOpen}
+            onDomReady={this.handleYelpApi}
             options={{ closeBoxURL: ``, enableEventPropagation: true }}
-            className='infoBox'>
+            className='infoBox'
+          >
             <div>
               <IconButton
                 onClick={this.onToggleOpen}

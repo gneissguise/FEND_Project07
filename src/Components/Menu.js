@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { reveal as HamburgerMenu } from 'react-burger-menu'
+import { Link } from 'react-router-dom'
 import './Menu.css'
 
 // Stateless component for the text filtering of markers
@@ -20,17 +21,21 @@ const FilterBox = (props) => {
 const MarkerNavItem = (props) => {
   const marker = props.marker
   return (
-    <a href={`/${marker.id}`} onClick={props.onClick} id={marker.id} key={marker.id}>
+    <Link
+      to={`/${marker.id}`}
+      onClick={props.onClick}
+      id={props.id}
+      key={marker.id}
+    >
       {marker.name}
-    </a>
+    </Link>
   )
 }
 
 // Helper function to check if a passed object is null or empty
-// eslint-disable-next-line
-const isNullOrEmpty = x =>
-  typeof x === "string" &&
-    (x.trim().length === 0 || x === "" || x == null) ||
+const isNullOrEmpty = x => // eslint-disable-next-line
+  typeof x === "string" && // eslint-disable-next-line
+    (x.trim().length === 0 || x === "" || x == null) || // eslint-disable-next-line
     /number|array|object|undefined/.test(typeof x) && x == null
     ? true
     : false
@@ -55,9 +60,10 @@ class Menu extends Component {
     this.handleTextFilter = this.handleTextFilter.bind(this)
   }
 
-  //TODO: Make links clickable so that the info box is toggled on marker
+  // Toggles infobox display
   handleClick(event) {
     event.preventDefault()
+    this.props.toggleOpen(event.target.id)
   }
 
   // Filters out items on the list based on text in the <FilterBox> component
@@ -94,6 +100,7 @@ class Menu extends Component {
           />
           <div className="scrollable">
             {markers.map(m => m.visible ? <MarkerNavItem
+                                id={m.id}
                                 key={m.id}
                                 marker={m}
                                 onClick={this.handleClick}

@@ -1,57 +1,77 @@
 body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  background: #151515;
+  text-align: center;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #151515;
-  height: 100%;
-  position: absolute;
-  text-align: center;
-  width: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
     monospace;
 }
 
 input[type=text] {
-  margin: 1rem;
   min-width: 15rem;
-  background: #222;
-  background: linear-gradient(#333, #222);
+  margin: 1rem;
+  padding: 0.5rem 0.625rem;
+  color: #888;
   border: 0.0625rem solid #444;
   border-radius: 0.3125rem;
+  background: #222;
+  background: linear-gradient(#333,
+    #222);
   box-shadow: 0 0.125rem 0 #000;
-  color: #888;
+  text-shadow: 0 -0.0625rem 0 #000;
   font-size: 1rem;
   font-weight: 400;
-  padding: 0.5rem 0.625rem;
-  text-shadow: 0 -0.0625rem 0 #000;
 }
 
 input.glow:focus {
-  animation: glow 800ms ease-out infinite alternate;
-  background: #222922;
-  background: linear-gradient(#333933, #222922);
-  border-color: #393;
-  box-shadow: 0 0 0.3125rem rgba(0, 255, 0, 0.2), inset 0 0 0.3125rem rgba(0, 255, 0, 0.1), 0 0.125rem 0 #000;
   color: #efe;
+  border-color: #393;
+  background: #222922;
+  background: linear-gradient(#333933,
+    #222922);
   outline: none;
+  box-shadow: 0 0 0.3125rem rgba(0, 255, 0, 0.2),
+    inset 0 0 0.3125rem rgba(0, 255, 0, 0.1),
+    0 0.125rem 0 #000;
+  animation: glow 800ms ease-out infinite alternate;
 }
 
 @keyframes glow {
   0% {
     border-color: #393;
-    box-shadow: 0 0 0.3125rem rgba(0, 255, 0, .2), inset 0 0 0.3125rem rgba(0, 255, 0, .1), 0 0.125rem 0 #000;
+    box-shadow: 0 0 0.3125rem rgba(0, 255, 0, .2),
+      inset 0 0 0.3125rem rgba(0, 255, 0, .1),
+      0 0.125rem 0 #000;
   }
 
   100% {
     border-color: #6f6;
-    box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6), inset 0 0 0.625rem rgba(0, 255, 0, .4), 0 0.125rem 0 #000;
+    box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6),
+      inset 0 0 0.625rem rgba(0, 255, 0, .4),
+      0 0.125rem 0 #000;
   }
 }
 
@@ -60,22 +80,22 @@ nav.bm-item-list {
 }
 
 .infoBox {
-  background-color: #fff;
-  padding: 0 0 0.5rem 0;
   width: 17.188rem;
-  /* 275/16 */
-  border-radius: 3px;
-  box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.3);
   margin: auto;
-  cursor: default;
+  padding: 0 0 0.5rem 0;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.3);
   font-size: 0.85rem;
+  cursor: default;
+  /* 275/16 */
 }
 
 .infoBox .details {
-  padding: 0;
-  margin: auto;
   width: 100%;
   height: auto;
+  margin: auto;
+  padding: 0;
 }
 
 .infoBox .details span {
@@ -84,8 +104,8 @@ nav.bm-item-list {
 }
 
 nav a {
-  font-size: 1rem;
   display: block;
+  font-size: 1rem;
 }
 
 .filterBox {
@@ -95,9 +115,9 @@ nav a {
 
 .scrollable {
   display: block;
-  overflow: auto;
   width: 100%;
   height: 74vh;
+  overflow: auto;
 }
 
 .bm-menu {
@@ -105,5 +125,5 @@ nav a {
 }
 
 ::-webkit-scrollbar {
-display: none;
+  display: none;
 }
