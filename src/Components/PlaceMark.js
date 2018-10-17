@@ -5,33 +5,45 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import YelpApi from './YelpApi'
-// import Food from '@material-ui/icons/LocalDining'
-// import Drink from '@material-ui/icons/LocalBar'
-// import Cafe from '@material-ui/icons/LocalCafe'
 
+// Stateless component that displays info for the <InfoBox>
 //TODO: each location should have its own route
 const Info = (props) => {
   const yelpData = props.yelpData
   return (
-    <div>
-      <div style={{
+    <>
+      <figure style={{
         background: `url(${yelpData.image_url})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        width: '16rem',
-        height: '8rem',
-        margin: 'auto'
-      }}></div>
-      <p>Rating: {yelpData.rating}</p>
-      <p>Price: {yelpData.price}</p>
-      <p>Address: {yelpData.location.display_address[0]},</p>
-      <p>{yelpData.location.display_address[1]}</p>
-      <a href={yelpData.url} title="Yelp profile">More info..</a>
-    </div>
+        width: '100%',
+        height: '10rem',
+        margin: 'auto',
+        padding: 0
+      }}></figure>
+      <figcaption className="details">
+        <div style={{
+          width: '100%',
+          margin: '0.5rem 0'
+        }}>
+          <span><strong>Rating: {yelpData.rating}/5</strong></span>
+          <span><strong>Price: {yelpData.price}</strong></span>
+        </div>
+        <address style={{ marginBottom: '0.5rem' }}>
+          {yelpData.location.display_address.map((a, i) => <div key={`addr${i}`}>{a}</div>)}
+          <div>{yelpData.phone}</div>
+        </address>
+        <a href={yelpData.url}
+          title="Yelp profile"
+          target="_blank"
+          rel="noopener noreferrer">Visit Yelp for more details!</a>
+      </figcaption>
+    </>
   )
 }
 
+// Google map marker implementation, complete with yelp data and toggleable visibility state
 class PlaceMark extends Component {
   constructor(props) {
     super(props)

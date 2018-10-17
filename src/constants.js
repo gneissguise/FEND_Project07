@@ -1,3 +1,4 @@
+// minimum data needed to get map markers displayed
 export const MARKERS = [
   { position: { lat: 33.5038147, lng: -112.1000349 }, name: "Da Vang Restaurant", id: "da-vang-restaurant-phoenix", visible: true },
   { position: { lat: 33.4974403381348, lng: -112.083885192871 }, name: "Copper Star Coffee", id: "copper-star-coffee-phoenix", visible: true },
@@ -31,6 +32,7 @@ export const MARKERS = [
   { position: { lat: 33.47903, lng: -112.04789 }, name: "Barrio Cafe", id: "barrio-café-phoenix-2", visible: true }
 ]
 
+// Google map settings, controlling the visual style
 export const MAP_OPTIONS = {
   mapTypeControl: false,
   fullscreenControl: false,
@@ -115,6 +117,8 @@ export const MAP_OPTIONS = {
     }
   ]}
 
-  export const MAP_KEY = 'AIzaSyAjwCGmLJQuWEtnfgsIw3ThLbolxrXLrX4'
+// My google map api key
+export const MAP_KEY = 'AIzaSyAjwCGmLJQuWEtnfgsIw3ThLbolxrXLrX4'
 
-  export const YELP_KEY = 'EhYmnMVtdRiyXX1HjAOptnV9-rpIvaQS_WHxz-jRbyk2Wzfe6kWSlAZZqJjkXiqxPRuc-xCDMCzhsdvbdkZybFdcINUvDvfsYph7UPGaZ3dOcBLD89Ykou8OPW26W3Yx'
+// My yelp api key
+export const YELP_KEY = 'EhYmnMVtdRiyXX1HjAOptnV9-rpIvaQS_WHxz-jRbyk2Wzfe6kWSlAZZqJjkXiqxPRuc-xCDMCzhsdvbdkZybFdcINUvDvfsYph7UPGaZ3dOcBLD89Ykou8OPW26W3Yx'

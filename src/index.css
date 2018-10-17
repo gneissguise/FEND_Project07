@@ -22,36 +22,37 @@ input[type=text] {
   margin: 1rem;
   min-width: 15rem;
   background: #222;
-	background: linear-gradient(#333, #222);
-	border: 0.0625rem solid #444;
-	border-radius: 0.3125rem;
-	box-shadow: 0 0.125rem 0 #000;
-	color: #888;
-	font-size: 1rem;
-	font-weight: 400;
-	padding: 0.5rem 0.625rem;
-	text-shadow: 0 -0.0625rem 0 #000;
+  background: linear-gradient(#333, #222);
+  border: 0.0625rem solid #444;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.125rem 0 #000;
+  color: #888;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.5rem 0.625rem;
+  text-shadow: 0 -0.0625rem 0 #000;
 }
 
 input.glow:focus {
-	animation: glow 800ms ease-out infinite alternate;
-	background: #222922;
-	background: linear-gradient(#333933, #222922);
-	border-color: #393;
-	box-shadow: 0 0 0.3125rem rgba(0, 255, 0, 0.2), inset 0 0 0.3125rem rgba(0, 255, 0, 0.1), 0 0.125rem 0 #000;
-	color: #efe;
-	outline: none;
+  animation: glow 800ms ease-out infinite alternate;
+  background: #222922;
+  background: linear-gradient(#333933, #222922);
+  border-color: #393;
+  box-shadow: 0 0 0.3125rem rgba(0, 255, 0, 0.2), inset 0 0 0.3125rem rgba(0, 255, 0, 0.1), 0 0.125rem 0 #000;
+  color: #efe;
+  outline: none;
 }
 
 @keyframes glow {
-    0% {
-  		border-color: #393;
-  		box-shadow: 0 0 0.3125rem rgba(0, 255, 0, .2), inset 0 0 0.3125rem rgba(0, 255, 0, .1), 0 0.125rem 0 #000;
-    }
-    100% {
-  		border-color: #6f6;
-  		box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6), inset 0 0 0.625rem rgba(0, 255, 0, .4), 0 0.125rem 0 #000;
-    }
+  0% {
+    border-color: #393;
+    box-shadow: 0 0 0.3125rem rgba(0, 255, 0, .2), inset 0 0 0.3125rem rgba(0, 255, 0, .1), 0 0.125rem 0 #000;
+  }
+
+  100% {
+    border-color: #6f6;
+    box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6), inset 0 0 0.625rem rgba(0, 255, 0, .4), 0 0.125rem 0 #000;
+  }
 }
 
 nav.bm-item-list {
@@ -60,17 +61,26 @@ nav.bm-item-list {
 
 .infoBox {
   background-color: #fff;
-  padding: 0 0.75rem 0.5rem 0.75rem;
-  width: 17.188rem; /* 275/16 */
+  padding: 0 0 0.5rem 0;
+  width: 17.188rem;
+  /* 275/16 */
   border-radius: 3px;
   box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.3);
   margin: auto;
+  cursor: default;
+  font-size: 0.85rem;
 }
 
-.responsive {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+.infoBox .details {
+  padding: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+.infoBox .details span {
+  display: inline-block;
+  width: 50%;
 }
 
 nav a {
@@ -85,8 +95,15 @@ nav a {
 
 .scrollable {
   display: block;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
   width: 100%;
-  height: auto;
+  height: 74vh;
+}
+
+.bm-menu {
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+display: none;
 }

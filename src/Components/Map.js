@@ -4,8 +4,10 @@ import PlaceMark from './PlaceMark'
 import { MAP_OPTIONS, MAP_KEY } from '../constants'
 import './Map.css'
 
+// Google map api url
 const mapUrl = `https://maps.googleapis.com/maps/api/js?key=${MAP_KEY}&v=3.exp&libraries=geometry,drawing,places`
 
+// Map component of the central Phoenix area
 const PhxMap = withScriptjs(withGoogleMap(props =>
   <GoogleMap
     google={window.google}

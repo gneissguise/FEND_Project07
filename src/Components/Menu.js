@@ -41,6 +41,7 @@ const patternConvert = str =>
     ? new RegExp('.', 'gi')
     : new RegExp(`${str.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s/g, '.*')}`, 'gi')
 
+// Side menu component
 class Menu extends Component {
   constructor(props) {
     super(props)
@@ -59,6 +60,7 @@ class Menu extends Component {
     event.preventDefault()
   }
 
+  // Filters out items on the list based on text in the <FilterBox> component
   handleTextFilter(event) {
     const pattern = patternConvert(event.target.value)
     const filteredMarkers = this.props.markers.map(m => {
@@ -74,11 +76,6 @@ class Menu extends Component {
     })
 
     this.props.handleMarkerUpdate(filteredMarkers)
-    console.log("Pattern: ", pattern)
-  }
-
-  componentDidUpdate() {
-    console.log("Menu state: ", this.state)
   }
 
   render() {
@@ -88,6 +85,8 @@ class Menu extends Component {
       <div id="outer-container">
         <HamburgerMenu
           disableCloseOnEsc
+          disableOverlayClick
+          noOverlay
         >
           <FilterBox
             value={this.state.textFilter}
