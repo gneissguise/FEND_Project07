@@ -33,6 +33,16 @@ This is my submission to the Udacity Front End Nanodegree's Neighborhood Map fin
 
     Your site is now running at `http://localhost:3000`!
 
+5.  **How to enable Service Worker**
+
+    This application is setup to work offline on a production build.  To run in production mode, complete the following steps:
+    - From the project directory, run the following commands to start it up.
+    ```sh
+    npm run build
+    serve -s build
+    ```
+    - Then navigate to `http://localhost:5000`
+
 ## 🧐 What's inside?
 
   1.  **`create-react-app`**: This project was created using create-react-app by facebook.

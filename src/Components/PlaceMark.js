@@ -13,15 +13,11 @@ const Info = (props) => {
   return (
     <>
       <figure style={{
-        background: `url(${yelpData.image_url})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
         width: '100%',
         height: '10rem',
         margin: 'auto',
         padding: 0
-      }}></figure>
+      }}><img src={yelpData.image_url} alt={yelpData.name} style={{ height: '100%', maxWidth: '100%' }} /></figure>
       <figcaption className="details">
         <div style={{
           width: '100%',
@@ -54,6 +50,7 @@ class PlaceMark extends Component {
 
     this.onToggleOpen = this.onToggleOpen.bind(this)
     this.handleYelpApi = this.handleYelpApi.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   // Handles the loading of yelp data.  Checks localstorage first, then hits api
@@ -77,12 +74,17 @@ class PlaceMark extends Component {
           yelpData.push(data)
           localStorage.setItem(LOCALSTORAGE, JSON.stringify(yelpData))
         })
+        .fail(error => alert(`An error occurred connecting to yelp: ${error}`))
       }
     }
   }
 
   // Toggles the opening of the <InfoBox>
   onToggleOpen() {
+    this.props.toggleOpen(this.props.marker.id)
+  }
+
+  handleClick(event) {
     this.props.toggleOpen(this.props.marker.id)
   }
 
@@ -93,10 +95,11 @@ class PlaceMark extends Component {
       <Marker
         id={`marker-${marker.id}`}
         animation={google.maps.Animation.DROP}
+        defaultAnimation={google.maps.Animation.BOUNCE}
         key={`marker-${marker.id}`}
         position={marker.position}
         title={marker.name}
-        onClick={this.onToggleOpen} >
+        onClick={this.handleClick} >
         {marker.isOpen ?
           <InfoBox
             onCloseClick={this.onToggleOpen}

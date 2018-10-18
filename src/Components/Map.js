@@ -15,7 +15,7 @@ const PhxMap = withScriptjs(withGoogleMap(props =>
     defaultCenter={{ lat: 33.494886, lng: -112.073881 }}
     options={MAP_OPTIONS}
   >
-    {props.markers.map((m) => m.visible ? <PlaceMark google={window.google} marker={m} key={m.id} toggleOpen={props.toggleOpen} /> : null)}
+    {props.markers.map((m) => m.visible ? <PlaceMark google={window.google} marker={m} key={m.id} toggleOpen={props.toggleOpen} handleMarkerUpdate={props.handleMarkerUpdate} /> : null)}
   </GoogleMap>
 ))
 
@@ -33,7 +33,8 @@ class Map extends Component {
         containerElement={<div style={{ height: `90vh` }} />}
         mapElement={<div style={{ height: `100%` }} />}
         markers={this.props.markers}
-        toggleOpen={this.props.toggleOpen} />
+        toggleOpen={this.props.toggleOpen}
+        handleMarkerUpdate={this.props.handleMarkerUpdate} />
     )
   }
 }

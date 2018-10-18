@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { reveal as HamburgerMenu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
+import $ from 'jquery'
 import './Menu.css'
 
 // Stateless component for the text filtering of markers
@@ -82,6 +83,10 @@ class Menu extends Component {
     })
 
     this.props.handleMarkerUpdate(filteredMarkers)
+  }
+
+  componentDidMount() {
+    $('.bm-burger-button button').attr('tabindex', '0')
   }
 
   render() {

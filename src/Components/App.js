@@ -17,6 +17,10 @@ class App extends Component {
     this.handleToggleOpen = this.handleToggleOpen.bind(this)
   }
 
+  gm_authFailure() {
+    window.alert('Error connecting to Google Maps api..')
+  }
+
   handleMarkerUpdate(markers) {
     this.setState({ markers })
   }
@@ -32,6 +36,10 @@ class App extends Component {
     })
 
     this.setState({ markers })
+  }
+
+  componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure;
   }
 
   render() {
