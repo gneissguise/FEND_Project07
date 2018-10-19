@@ -27,6 +27,7 @@ const MarkerNavItem = (props) => {
       onClick={props.onClick}
       id={props.id}
       key={marker.id}
+      tabIndex="0"
     >
       {marker.name}
     </Link>
